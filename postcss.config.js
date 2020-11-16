@@ -1,19 +1,20 @@
 const postcssEasyImport = require('postcss-easy-import')
-const postcssSimpleVars = require('postcss-simple-vars')
 const postcssNested = require('postcss-nested')
 const postcssCalc = require('postcss-calc')
 const autoprefixer = require('autoprefixer')
+const postcssFor = require('postcss-for')
 
 // 使用プラグイン
 const initPlugin = [
-    postcssEasyImport({}),
-    postcssSimpleVars({}),
-    postcssNested({}),
-    postcssCalc({}),
-    autoprefixer({})
+  postcssEasyImport({}),
+  postcssFor({}),
+  postcssNested({}),
+  require('postcss-simple-vars'),
+  postcssCalc({}),
+  autoprefixer({})
 ]
 
 // 実行
 module.exports = {
-    plugins: initPlugin
+  plugins: initPlugin
 }
