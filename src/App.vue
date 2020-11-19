@@ -33,6 +33,15 @@
 
       </div>
 
+      <div class="vlp-talk-record vlp-flex vlp-flex-wrap">
+        <UserIcon />
+
+        <div class="vlp-talk-message vlp-border-box">
+          <ImageMapMessage :line-json="richmessage" />
+        </div>
+
+      </div>
+
     </div>
   </div>
 
@@ -43,12 +52,24 @@ import UserIcon from './components/UserIcon'
 import TextMessage from './components/messages/TextMessage'
 import ImageMessage from './components/messages/ImageMessage'
 import VideoMessage from './components/messages/VideoMessage'
+import ImageMapMessage from './components/messages/ImageMapMessage'
 
 export default {
   name: 'App',
-  components: { VideoMessage, ImageMessage, TextMessage, UserIcon },
+  components: { ImageMapMessage, VideoMessage, ImageMessage, TextMessage, UserIcon },
   props: {
 
+  },
+  data: function () {
+    return {
+      richmessage: {
+        baseUrl: 'https://sm.mashable.com/mashable_in/seo/default/8-years-of-the-avengers-how-joss-whedons-risk-became-crucial_5z9w.jpg',
+        baseSize: {
+          width: 1040,
+          height: 700
+        }
+      }
+    }
   }
 }
 </script>
