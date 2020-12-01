@@ -1,7 +1,7 @@
 <template>
 
   <div class="vlp-message vlp-round-message vlp-message-text vlp-tail">
-    {{lineJson.text}}
+    {{lineJson.hasOwnProperty('text') ? lineJson.text : ''}}
   </div>
 
 </template>
