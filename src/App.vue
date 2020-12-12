@@ -42,6 +42,24 @@
 
       </div>
 
+      <div class="vlp-talk-record vlp-flex vlp-flex-wrap">
+        <UserIcon />
+
+        <div class="vlp-talk-message vlp-border-box">
+          <ButtonTemplateMessage :line-json="btnTemplate" />
+        </div>
+
+      </div>
+
+      <div class="vlp-talk-record vlp-flex vlp-flex-wrap">
+        <UserIcon />
+
+        <div class="vlp-talk-message vlp-border-box">
+          <ButtonTemplateMessage :line-json="confirmTemplate" />
+        </div>
+
+      </div>
+
     </div>
   </div>
 
@@ -53,10 +71,11 @@ import TextMessage from './components/messages/TextMessage'
 import ImageMessage from './components/messages/ImageMessage'
 import VideoMessage from './components/messages/VideoMessage'
 import ImageMapMessage from './components/messages/ImageMapMessage'
+import ButtonTemplateMessage from './components/messages/template-messages/ButtonTemplateMessage'
 
 export default {
   name: 'App',
-  components: { ImageMapMessage, VideoMessage, ImageMessage, TextMessage, UserIcon },
+  components: { ButtonTemplateMessage, ImageMapMessage, VideoMessage, ImageMessage, TextMessage, UserIcon },
   props: {
 
   },
@@ -67,6 +86,61 @@ export default {
         baseSize: {
           width: 1040,
           height: 700
+        }
+      },
+      btnTemplate: {
+        type: 'template',
+        altText: 'This is a buttons template',
+        template: {
+          type: 'buttons',
+          thumbnailImageUrl: 'https://example.com/bot/images/image.jpg',
+          imageAspectRatio: 'rectangle',
+          imageSize: 'cover',
+          imageBackgroundColor: '#FFFFFF',
+          title: 'Menu',
+          text: 'Please select',
+          defaultAction: {
+            type: 'uri',
+            label: 'View detail',
+            uri: 'http://example.com/page/123'
+          },
+          actions: [
+            {
+              type: 'postback',
+              label: 'Buy',
+              data: 'action=buy&itemid=123'
+            },
+            {
+              type: 'postback',
+              label: 'Add to cart',
+              data: 'action=add&itemid=123'
+            },
+            {
+              type: 'uri',
+              label: 'View detail',
+              uri: 'http://example.com/page/123'
+            }
+          ]
+        }
+      },
+      confirmTemplate: {
+        type: 'template',
+        altText: 'this is a confirm template',
+        template: {
+          type: 'confirm',
+          text: 'Are you sure?',
+          actions: [
+            {
+              type: 'message',
+              label: 'Yes',
+              text: 'yes'
+            },
+            {
+              type: 'message',
+              label: 'No',
+              text: 'no'
+            }
+          ]
         }
       }
     }
