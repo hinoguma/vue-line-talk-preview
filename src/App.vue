@@ -51,6 +51,15 @@
 
       </div>
 
+      <div class="vlp-talk-record vlp-flex vlp-flex-wrap">
+        <UserIcon />
+
+        <div class="vlp-talk-message vlp-border-box">
+          <ButtonTemplateMessage :line-json="confirmTemplate" />
+        </div>
+
+      </div>
+
     </div>
   </div>
 
@@ -110,6 +119,26 @@ export default {
               type: 'uri',
               label: 'View detail',
               uri: 'http://example.com/page/123'
+            }
+          ]
+        }
+      },
+      confirmTemplate: {
+        type: 'template',
+        altText: 'this is a confirm template',
+        template: {
+          type: 'confirm',
+          text: 'Are you sure?',
+          actions: [
+            {
+              type: 'message',
+              label: 'Yes',
+              text: 'yes'
+            },
+            {
+              type: 'message',
+              label: 'No',
+              text: 'no'
             }
           ]
         }
