@@ -55,7 +55,16 @@
         <UserIcon />
 
         <div class="vlp-talk-message vlp-border-box">
-          <ButtonTemplateMessage :line-json="confirmTemplate" />
+          <ConfirmTemplateMessage :line-json="confirmTemplate" />
+        </div>
+
+      </div>
+
+      <div class="vlp-talk-record vlp-flex vlp-flex-wrap">
+        <UserIcon />
+
+        <div class="vlp-talk-message vlp-border-box">
+          <CarouselTemplateMessage :line-json="carouselTemplate" />
         </div>
 
       </div>
@@ -72,10 +81,21 @@ import ImageMessage from './components/messages/ImageMessage'
 import VideoMessage from './components/messages/VideoMessage'
 import ImageMapMessage from './components/messages/ImageMapMessage'
 import ButtonTemplateMessage from './components/messages/template-messages/ButtonTemplateMessage'
+import CarouselTemplateMessage from './components/messages/template-messages/CarouselTemplateMessage'
+import ConfirmTemplateMessage from './components/messages/template-messages/ConfirmTemplateMessage'
 
 export default {
   name: 'App',
-  components: { ButtonTemplateMessage, ImageMapMessage, VideoMessage, ImageMessage, TextMessage, UserIcon },
+  components: {
+    ConfirmTemplateMessage,
+    CarouselTemplateMessage,
+    ButtonTemplateMessage,
+    ImageMapMessage,
+    VideoMessage,
+    ImageMessage,
+    TextMessage,
+    UserIcon
+  },
   props: {
 
   },
@@ -141,6 +161,73 @@ export default {
               text: 'no'
             }
           ]
+        }
+      },
+      carouselTemplate: {
+        type: 'template',
+        altText: 'this is a carousel template',
+        template: {
+          type: 'carousel',
+          columns: [
+            {
+              thumbnailImageUrl: 'https://example.com/bot/images/item1.jpg',
+              imageBackgroundColor: '#FFFFFF',
+              title: 'this is menu',
+              text: 'description',
+              defaultAction: {
+                type: 'uri',
+                label: 'View detail',
+                uri: 'http://example.com/page/123'
+              },
+              actions: [
+                {
+                  type: 'postback',
+                  label: 'Buy',
+                  data: 'action=buy&itemid=111'
+                },
+                {
+                  type: 'postback',
+                  label: 'Add to cart',
+                  data: 'action=add&itemid=111'
+                },
+                {
+                  type: 'uri',
+                  label: 'View detail',
+                  uri: 'http://example.com/page/111'
+                }
+              ]
+            },
+            {
+              thumbnailImageUrl: 'https://example.com/bot/images/item2.jpg',
+              imageBackgroundColor: '#000000',
+              title: 'this is menu',
+              text: 'description',
+              defaultAction: {
+                type: 'uri',
+                label: 'View detail',
+                uri: 'http://example.com/page/222'
+              },
+              actions: [
+                {
+                  type: 'postback',
+                  label: 'Buy',
+                  data: 'action=buy&itemid=222'
+                },
+                {
+                  type: 'postback',
+                  label: 'Add to cart',
+                  data: 'action=add&itemid=222'
+                },
+                {
+                  type: 'uri',
+                  label: 'View detail',
+                  uri: 'http://example.com/page/222'
+                }
+              ]
+            }
+          ],
+          imageAspectRatio: 'rectangle',
+          imageSize: 'cover'
         }
       }
     }
