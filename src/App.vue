@@ -69,6 +69,15 @@
 
       </div>
 
+      <div class="vlp-talk-record vlp-flex vlp-flex-wrap">
+        <UserIcon />
+
+        <div class="vlp-talk-message vlp-border-box">
+          <VoiceMessage :line-json="voice" />
+        </div>
+
+      </div>
+
     </div>
   </div>
 
@@ -83,10 +92,12 @@ import ImageMapMessage from './components/messages/ImageMapMessage'
 import ButtonTemplateMessage from './components/messages/template-messages/ButtonTemplateMessage'
 import CarouselTemplateMessage from './components/messages/template-messages/CarouselTemplateMessage'
 import ConfirmTemplateMessage from './components/messages/template-messages/ConfirmTemplateMessage'
+import VoiceMessage from './components/messages/VoiceMessage'
 
 export default {
   name: 'App',
   components: {
+    VoiceMessage,
     ConfirmTemplateMessage,
     CarouselTemplateMessage,
     ButtonTemplateMessage,
@@ -229,6 +240,11 @@ export default {
           imageAspectRatio: 'rectangle',
           imageSize: 'cover'
         }
+      },
+      voice: {
+        type: 'audio',
+        originalContentUrl: 'https://example.com/original.m4a',
+        duration: 60000
       }
     }
   }

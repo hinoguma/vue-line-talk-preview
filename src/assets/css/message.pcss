@@ -28,6 +28,16 @@
             font-size: 0.85rem;
         }
 
+        &-voice {
+            background-color: #FBFAFB;
+            color: #495057;
+            display: flex;
+            padding: 0.25rem 0.5rem;
+            white-space: pre-wrap;
+            font-size: 0.85rem;
+            align-items: center;
+        }
+
         &-image {
             max-width: 70%;
             &-content {
@@ -91,8 +101,41 @@
             height: 1.25rem;
             align-items: center;
             width: 40%;
-            &-start-btn, &-sound-wave {
-                height: 100%;
+            &-start-btn {
+                border-radius: 50%;
+                background-color: darkgrey;
+                width: 1.2rem;
+                height: 1.2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &-icon {
+                    transform: translateX(10%);
+                    border-top: 5px solid transparent;
+                    border-left: 7px solid white;
+                    border-bottom: 5px solid transparent;
+                }
+            }
+
+            &-duration {
+                font-weight: bold;
+                margin-right: 2rem;
+            }
+            &-wave {
+                width: 2px;
+                background-color: darkgrey;
+                margin-right: 2px;
+
+                &-small {
+                    height: 8px;
+                }
+                &-medium {
+                    height: 12px;
+                }
+                &-large {
+                    height: 16px;
+                }
             }
         }
 
