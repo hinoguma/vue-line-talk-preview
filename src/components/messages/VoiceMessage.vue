@@ -30,7 +30,7 @@ export default {
   mixins: [LineMessageMixin],
   computed: {
     durationTime: function () {
-      if (Object.prototype.hasOwnProperty.call(this.lineJson, 'duration') === false) {
+      if (!this.utilsStatic.hasProperty(this.lineJson, 'duration')) {
         return '0:00'
       }
       return this.convertTimeStrFromMils(this.lineJson.duration)
@@ -38,6 +38,9 @@ export default {
   },
   methods: {
     convertTimeStrFromMils: function (duration) {
+      if (!Number.isInteger(duration)) {
+        duration = 0
+      }
       const second = duration / 1000
       if (second < 60) {
         return '0:' + second

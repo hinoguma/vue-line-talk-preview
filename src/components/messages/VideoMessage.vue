@@ -1,6 +1,6 @@
 <template>
   <div class="vlp-message vlp-message-video">
-    <template v-if="lineJson.hasOwnProperty('previewImageUrl')" >
+    <template v-if="utilsStatic.hasProperty(lineJson, 'previewImageUrl')" >
       <img class="vlp-message-video-content vlp-round-message" :src="lineJson.previewImageUrl" alt="">
 
       <div class="vlp-message-video-shadow vlp-round-message"></div>

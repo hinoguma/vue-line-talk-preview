@@ -1,5 +1,5 @@
 <template>
-  <div class="vlp-message-template-column">
+  <div :class="columnClass">
     <div class="vlp-message-template-header">
 
       <div v-if="thumbnailImageUrl !== ''" class="vlp-message-template-header-img"
@@ -38,9 +38,17 @@ export default {
     imageBackgroundColor: { type: String, default: '#FFFFFF' },
     title: { type: String, default: '' },
     text: { type: String, default: '' },
-    actions: { type: Array, default: () => [] }
+    actions: { type: Array, default: () => [] },
+    isUser: { type: Boolean, default: false }
   },
   computed: {
+    columnClass: function () {
+      return {
+        'vlp-message-template-column': true,
+        'vlp-message-template-column-is-client': !this.isUser,
+        'vlp-message-template-column-is-user': this.isUser
+      }
+    },
     actionsClass: function () {
       return {
         'vlp-message-template-actions': true,

@@ -3,7 +3,7 @@
   <div class="vlp-message-template">
 
     <Column :text="text"
-            :actions="lineJson.template.actions"
+            :actions="actions"
             :title="title"
     />
 
@@ -20,17 +20,17 @@ export default {
   components: { Column },
   mixins: [LineMessageMixin],
   computed: {
+    template: function () {
+      return this.utilsStatic.getProperty(this.lineJson, 'template', {})
+    },
     title: function () {
-      if (Object.prototype.hasOwnProperty.call(this.lineJson.template, 'title') === false) {
-        return ''
-      }
-      return this.lineJson.template.title
+      return this.utilsStatic.getProperty(this.template, 'title', '')
     },
     text: function () {
-      if (Object.prototype.hasOwnProperty.call(this.lineJson.template, 'text') === false) {
-        return ''
-      }
-      return this.lineJson.template.text
+      return this.utilsStatic.getProperty(this.template, 'text', '')
+    },
+    actions: function () {
+      return this.utilsStatic.getProperty(this.template, 'actions', [])
     }
   }
 }
