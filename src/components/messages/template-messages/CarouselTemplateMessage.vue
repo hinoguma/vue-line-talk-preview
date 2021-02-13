@@ -1,6 +1,6 @@
 <template>
 
-  <div class="vlp-message-template vlp-flex">
+  <div :class="carouselClass">
 
     <Column v-for="(column, index) in columns" :key="index"
             :actions="utilsStatic.getProperty(column, 'actions', [])"
@@ -10,6 +10,7 @@
             :imageBackgroundColor="utilsStatic.getProperty(column, 'imageBackgroundColor', '#FFFFFF')"
             :image-size="utilsStatic.getProperty(template, 'imageAspectRatio', 'rectangle')"
             :image-aspect-ratio="utilsStatic.getProperty(template, 'imageSize', 'cover')"
+            :is-user="isUser"
     />
   </div>
 
@@ -29,6 +30,13 @@ export default {
     },
     columns: function () {
       return this.utilsStatic.getProperty(this.template, 'columns', [])
+    },
+    carouselClass: function () {
+      return {
+        'vlp-message-template': true,
+        'vlp-flex': true,
+        'vlp-flex-direction-row-reverse': this.isUser
+      }
     }
   }
 }

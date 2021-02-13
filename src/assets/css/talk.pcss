@@ -27,12 +27,11 @@
             height: 92%;
             overflow-x: auto;
             background-color: #E8E8E8;
-            padding: 5px;
+            padding: var(--talk-room-padding);
         }
 
         &-message {
-            width: calc(100% - var(--user-icon-width));
-            overflow: auto;
+            width: calc(100% - var(--user-icon-width) - var(--user-icon-side-blanc) - var(--talk-room-padding));
         }
 
         &-side {
