@@ -14,7 +14,7 @@
     "core-js": "^3.6.5",
     "css-loader": "^4.3.0",
     "postcss": "^8.0.8",
-    "postcss-calc": "^7.0.4",
+    "postcss-calc": "^7.0.5",
     "postcss-easy-import": "^3.0.0",
     "postcss-for": "^2.1.1",
     "postcss-loader": "^4.0.2",

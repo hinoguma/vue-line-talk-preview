@@ -3,6 +3,7 @@ const postcssNested = require('postcss-nested')
 const postcssCalc = require('postcss-calc')
 const autoprefixer = require('autoprefixer')
 const postcssFor = require('postcss-for')
+const calc = require('postcss-calc')
 
 // 使用プラグイン
 const initPlugin = [
@@ -11,7 +12,8 @@ const initPlugin = [
   postcssNested({}),
   require('postcss-simple-vars'),
   postcssCalc({}),
-  autoprefixer({})
+  autoprefixer({}),
+  calc({})
 ]
 
 // 実行
