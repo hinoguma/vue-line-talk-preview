@@ -29,5 +29,17 @@
             background-color: #E8E8E8;
             padding: 5px;
         }
+
+        &-message {
+            width: calc(100% - var(--user-icon-width));
+            overflow: auto;
+        }
+
+        &-side {
+            &-user {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
     }
 }
