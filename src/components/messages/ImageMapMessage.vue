@@ -2,7 +2,7 @@
   <div class="vlp-message vlp-message-imagemap">
     <img ref="vlp_imagemap_img" class="vlp-message-imagemap-content vlp-round-message"
          :style="imagemapImgStyle"
-         :src="lineJson.baseUrl" alt="">
+         :src="utilsStatic.getProperty(lineJson, 'baseUrl', '')" alt="">
   </div>
 </template>
 
@@ -19,10 +19,10 @@ export default {
   },
   computed: {
     baseWidth: function () {
-      if (this.lineJson && Object.prototype.hasOwnProperty.call(this.lineJson, 'baseSize') === false) {
+      if (!this.utilsStatic.hasProperty(this.lineJson, 'baseSize')) {
         return 0
       }
-      if (Object.prototype.hasOwnProperty.call(this.lineJson.baseSize, 'width') === false) {
+      if (!this.utilsStatic.hasProperty(this.lineJson, 'width')) {
         return 0
       }
       if (isNaN(this.lineJson.baseSize.width)) {
@@ -31,13 +31,10 @@ export default {
       return this.lineJson.baseSize.width
     },
     baseHeight: function () {
-      if (this.lineJson && Object.prototype.hasOwnProperty.call(this.lineJson, 'baseSize') === false) {
+      if (!this.utilsStatic.hasProperty(this.lineJson, 'baseSize')) {
         return 0
       }
-      if (
-        this.lineJson.baseSize &&
-          Object.prototype.hasOwnProperty.call(this.lineJson.baseSize, 'height') === false
-      ) {
+      if (!this.utilsStatic.hasProperty(this.lineJson, 'height')) {
         return 0
       }
       if (isNaN(this.lineJson.baseSize.height)) {

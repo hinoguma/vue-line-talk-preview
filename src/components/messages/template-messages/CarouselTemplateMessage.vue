@@ -3,13 +3,13 @@
   <div class="vlp-message-template vlp-flex">
 
     <Column v-for="(column, index) in columns" :key="index"
-            :actions="column.actions"
-            :text="column.text"
-            :title="column.hasOwnProperty('title') ? column.title : ''"
-            :thumbnailImageUrl="column.hasOwnProperty('thumbnailImageUrl') ? column.thumbnailImageUrl : ''"
-            :imageBackgroundColor="column.hasOwnProperty('imageBackgroundColor') ? column.imageBackgroundColor : '#FFFFFF'"
-            :image-size="imageSize"
-            :image-aspect-ratio="imageAspectRatio"
+            :actions="utilsStatic.getProperty(column, 'actions', [])"
+            :text="utilsStatic.getProperty(column, 'text', '')"
+            :title="utilsStatic.getProperty(column, 'title', '')"
+            :thumbnailImageUrl="utilsStatic.getProperty(column, 'thumbnailImageUrl', '')"
+            :imageBackgroundColor="utilsStatic.getProperty(column, 'imageBackgroundColor', '#FFFFFF')"
+            :image-size="utilsStatic.getProperty(template, 'imageAspectRatio', 'rectangle')"
+            :image-aspect-ratio="utilsStatic.getProperty(template, 'imageSize', 'cover')"
     />
   </div>
 
@@ -24,25 +24,12 @@ export default {
   components: { Column },
   mixins: [LineMessageMixin],
   computed: {
+    template: function () {
+      return this.utilsStatic.getProperty(this.lineJson, 'template', {})
+    },
     columns: function () {
-      if (Object.prototype.hasOwnProperty.call(this.lineJson.template, 'columns') === false) {
-        return []
-      }
-      return this.lineJson.template.columns
-    },
-    imageAspectRatio: function () {
-      if (Object.prototype.hasOwnProperty.call(this.lineJson.template, 'imageAspectRatio') === false) {
-        return 'rectangle'
-      }
-      return this.lineJson.template.imageAspectRatio
-    },
-    imageSize: function () {
-      if (Object.prototype.hasOwnProperty.call(this.lineJson.template, 'imageSize') === false) {
-        return 'cover'
-      }
-      return this.lineJson.template.imageSize
+      return this.utilsStatic.getProperty(this.template, 'columns', [])
     }
-
   }
 }
 </script>

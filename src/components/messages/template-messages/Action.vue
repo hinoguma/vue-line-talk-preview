@@ -1,26 +1,22 @@
 <template>
   <div class="vlp-message-template-action">
     <div class="vlp-message-template-action-text">
-      {{label}}
+      {{utilsStatic.getProperty(action, 'label', '')}}
     </div>
   </div>
 </template>
 
 <script>
+import { Utils } from '../../../libs/utils'
+
 export default {
   name: 'Action',
   props: {
     action: { type: Object, default: () => {} }
   },
-  computed: {
-    label: function () {
-      if (
-        this.action &&
-        Object.prototype.hasOwnProperty.call(this.action, 'label') === false
-      ) {
-        return ''
-      }
-      return this.action.label
+  data () {
+    return {
+      utilsStatic: Utils
     }
   }
 }
